@@ -1,86 +1,86 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Building2, Warehouse, GraduationCap, Home, CalendarCheck, Shield, ArrowUpRight } from "lucide-react";
+import { GraduationCap, Eye, Users, Sparkles, ArrowRight } from "lucide-react";
 
 const services = [
   {
-    icon: Building2,
-    title: "Corporate Office Security",
-    description: "Professional security for offices and IT parks with access control, surveillance and visitor management.",
-    num: "01",
-  },
-  {
-    icon: Warehouse,
-    title: "Warehouse Security",
-    description: "Complete protection for storage facilities with systematic patrolling and inventory safety protocols.",
-    num: "02",
-  },
-  {
     icon: GraduationCap,
-    title: "School & Campus Security",
-    description: "Child-safe security protocols for educational institutions with trained, background-verified personnel.",
-    num: "03",
+    title: "Training",
+    description: "We provide rigorous training to ensure top-notch safety and security for client properties.",
+    image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=400&fit=crop",
   },
   {
-    icon: Home,
-    title: "Residential Security",
-    description: "Round-the-clock gated community protection with visitor management and emergency response.",
-    num: "04",
+    icon: Eye,
+    title: "Digital Supervision",
+    description: "Effective supervision ensures quality service, team morale, and client satisfaction.",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop",
   },
   {
-    icon: CalendarCheck,
-    title: "Event Security",
-    description: "Comprehensive crowd management and VIP protection for corporate events, exhibitions and functions.",
-    num: "05",
+    icon: Users,
+    title: "Security Manpower",
+    description: "Our security manpower protect people, property, and assets with vigilance and discipline.",
+    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&h=400&fit=crop",
   },
   {
-    icon: Shield,
-    title: "Personal Security",
-    description: "Close protection officers and bodyguard services for high-profile individuals and executives.",
-    num: "06",
+    icon: Sparkles,
+    title: "Housekeeping",
+    description: "We ensure swift, efficient deployment for seamless housekeeping services to clients.",
+    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=400&fit=crop",
   },
 ];
 
 const ServicesSection = () => {
   return (
-    <section className="section-padding bg-background">
+    <section className="section-padding bg-muted/40">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-14">
           <span className="section-tag">Our Services</span>
-          <h2 className="text-3xl md:text-4xl font-bold font-display text-foreground mt-4 mb-4">
-            Integrated Security <span className="text-gradient-gold">Solutions</span>
+          <h2 className="text-3xl md:text-4xl font-display text-foreground mt-5 mb-3">
+            Introduction to Physical Security
           </h2>
-          <p className="text-muted-foreground font-body max-w-2xl mx-auto">
-            We provide comprehensive security services tailored to meet the unique needs of every client across industrial, commercial, and residential sectors.
+          <div className="w-16 h-1 bg-primary rounded-full mx-auto mb-4" />
+          <p className="text-muted-foreground font-body max-w-3xl mx-auto leading-relaxed">
+            We are proud to be a premier provider of Physical Security Solutions, catering
+            to industrial, commercial, and business organizations with comprehensive, professional services.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
             >
-              <div className="group relative h-full p-7 rounded-2xl bg-card border border-border hover:border-gold/30 transition-all duration-300 hover:shadow-lg">
-                <span className="absolute top-6 right-6 text-5xl font-bold font-display text-muted/60 select-none">
-                  {service.num}
-                </span>
-                <div className="w-12 h-12 rounded-xl bg-navy/10 flex items-center justify-center mb-5 group-hover:bg-gold/10 transition-colors">
-                  <service.icon className="w-6 h-6 text-navy group-hover:text-gold transition-colors" />
+              <div className="group bg-card rounded-xl overflow-hidden border border-border hover:shadow-lg transition-all duration-300 h-full flex flex-col">
+                {/* Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 to-transparent" />
                 </div>
-                <h3 className="text-lg font-bold font-display text-foreground mb-3">{service.title}</h3>
-                <p className="text-sm text-muted-foreground font-body leading-relaxed mb-5">
-                  {service.description}
-                </p>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold font-body text-navy hover:text-gold transition-colors"
-                >
-                  Get Quote <ArrowUpRight className="w-4 h-4" />
-                </Link>
+
+                {/* Content */}
+                <div className="p-5 flex flex-col flex-1">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 -mt-10 relative z-10 border-2 border-card bg-card">
+                    <service.icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-display text-foreground mb-2">{service.title}</h3>
+                  <p className="text-sm text-muted-foreground font-body leading-relaxed mb-4 flex-1">
+                    {service.description}
+                  </p>
+                  <Link
+                    to="/services"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold font-body text-primary hover:text-cyan-dark transition-colors"
+                  >
+                    Read more <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
               </div>
             </motion.div>
           ))}

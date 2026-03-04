@@ -9,8 +9,9 @@ const Index = () => {
   return (
     <>
       <HeroSection />
-      <ServicesSection />
+      <div className="pt-24" /> {/* Space for overlapping service cards */}
       <AboutSection />
+      <ServicesSection />
       <WhyChooseSection />
       <TestimonialsSection />
       <ContactSection />

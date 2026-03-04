@@ -1,21 +1,26 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Award, Users, Clock, ShieldCheck } from "lucide-react";
 import aboutImg from "@/assets/about-security.jpg";
 
-const highlights = [
-  { icon: Award, label: "Licensed & Certified" },
-  { icon: Users, label: "500+ Trained Guards" },
-  { icon: Clock, label: "24/7 Service" },
-  { icon: ShieldCheck, label: "100% Background Verified" },
+const bulletPoints = [
+  "Close Protection",
+  "Physical Security",
+  "Event Security",
+  "Corporate Security",
+  "Housekeeping",
+  "Risk Assessment",
 ];
 
 const AboutSection = () => {
   return (
-    <section className="section-padding bg-muted/30">
+    <section className="section-padding bg-background relative overflow-hidden">
+      {/* Decorative dot pattern */}
+      <div className="absolute left-0 top-1/3 w-20 h-40 dot-pattern opacity-40" />
+      <div className="absolute left-20 bottom-20 w-24 h-24 dot-pattern opacity-30" />
+
       <div className="container mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Image */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Image side */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -26,17 +31,15 @@ const AboutSection = () => {
             <div className="rounded-2xl overflow-hidden shadow-xl">
               <img
                 src={aboutImg}
-                alt="Security professional"
-                className="w-full h-[500px] object-cover"
+                alt="Bharat Security founder and team"
+                className="w-full h-[480px] object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 bg-gold rounded-2xl p-6 shadow-lg hidden md:block">
-              <div className="text-3xl font-bold font-display text-navy">29+</div>
-              <div className="text-sm font-body font-medium text-navy/80">Years of Trust</div>
-            </div>
+            {/* Floating accent bar */}
+            <div className="absolute -bottom-4 left-8 right-8 h-1.5 rounded-full bg-primary" />
           </motion.div>
 
-          {/* Content */}
+          {/* Content side */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -44,39 +47,37 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="section-tag">About Us</span>
-            <h2 className="text-3xl md:text-4xl font-bold font-display text-foreground mt-4 mb-6">
-              Legacy of <span className="text-gradient-gold">Protection</span> & Excellence
+            <h2 className="text-3xl md:text-4xl font-display text-foreground mt-5 mb-2 leading-tight">
+              Legacy of Protection
             </h2>
+            <div className="w-16 h-1 bg-primary rounded-full mb-6" />
+
             <p className="text-muted-foreground font-body leading-relaxed mb-4">
-              Founded by <strong className="text-foreground">Sudhir Kumar Mishra</strong> in 1996,
-              Bharat Security Services started as a small agency with a big vision—to provide
-              uncompromised, professional security to businesses and families across Pune.
+              Bharat Security Services was founded in 1996 under the visionary
+              leadership of <strong className="text-foreground">Sudhir Kumar Mishra</strong>,
+              renowned for his exceptional contributions to security and community welfare.
             </p>
             <p className="text-muted-foreground font-body leading-relaxed mb-8">
-              Today, we stand as Pune's most trusted security partner with over 500 trained
-              personnel serving 200+ satisfied clients across corporate, industrial, residential,
-              and educational sectors.
+              Under his inspiring guidance, Bharat Security Services has upheld its mission
+              of excellence and integrity, reflecting his values and commitment to service
+              across industrial, commercial, and residential sectors.
             </p>
 
-            <div className="grid grid-cols-2 gap-4 mb-8">
-              {highlights.map((item) => (
-                <div
-                  key={item.label}
-                  className="flex items-center gap-3 p-3 rounded-xl bg-card border border-border"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-navy/10 flex items-center justify-center shrink-0">
-                    <item.icon className="w-5 h-5 text-navy" />
-                  </div>
-                  <span className="text-sm font-medium font-body text-foreground">{item.label}</span>
+            {/* Bullet points grid — matching reference */}
+            <div className="grid grid-cols-2 gap-x-6 gap-y-3 mb-8">
+              {bulletPoints.map((point) => (
+                <div key={point} className="flex items-center gap-2.5">
+                  <div className="w-2 h-2 rounded-full bg-primary shrink-0" />
+                  <span className="text-sm font-body font-medium text-foreground">{point}</span>
                 </div>
               ))}
             </div>
 
             <Link
               to="/about"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-navy font-semibold font-body text-primary-foreground hover:bg-navy-light transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold font-body text-sm hover:bg-cyan-dark transition-colors"
             >
-              Learn More About Us
+              Learn More
             </Link>
           </motion.div>
         </div>

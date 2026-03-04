@@ -38,12 +38,15 @@ const TestimonialsSection = () => {
   const t = testimonials[current];
 
   return (
-    <section className="section-padding bg-background">
-      <div className="container mx-auto">
-        <div className="text-center mb-16">
+    <section className="section-padding gradient-navy relative overflow-hidden">
+      {/* Decorative */}
+      <div className="absolute top-0 right-0 w-72 h-72 rounded-full bg-primary/5 blur-3xl" />
+
+      <div className="container mx-auto relative z-10">
+        <div className="text-center mb-12">
           <span className="section-tag">Testimonials</span>
-          <h2 className="text-3xl md:text-4xl font-bold font-display text-foreground mt-4">
-            What Our <span className="text-gradient-gold">Clients Say</span>
+          <h2 className="text-3xl md:text-4xl font-display text-primary-foreground mt-5">
+            What Our Clients Say
           </h2>
         </div>
 
@@ -54,52 +57,51 @@ const TestimonialsSection = () => {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -30 }}
-              transition={{ duration: 0.4 }}
-              className="bg-card rounded-2xl border border-border p-8 md:p-12 text-center relative"
+              transition={{ duration: 0.35 }}
+              className="bg-primary-foreground/5 backdrop-blur-sm rounded-2xl border border-primary-foreground/10 p-8 md:p-12 text-center"
             >
-              <Quote className="w-10 h-10 text-gold/20 mx-auto mb-6" />
-              <p className="text-lg md:text-xl font-body text-foreground leading-relaxed mb-8">
+              <Quote className="w-8 h-8 text-primary/40 mx-auto mb-5" />
+              <p className="text-lg md:text-xl font-body text-primary-foreground leading-relaxed mb-6">
                 "{t.text}"
               </p>
-              <div className="flex justify-center gap-1 mb-4">
+              <div className="flex justify-center gap-1 mb-3">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star
                     key={i}
-                    className={`w-5 h-5 ${i < t.rating ? "text-gold fill-gold" : "text-muted"}`}
+                    className={`w-4 h-4 ${i < t.rating ? "text-primary fill-primary" : "text-primary-foreground/20"}`}
                   />
                 ))}
               </div>
-              <h4 className="text-lg font-bold font-display text-foreground">{t.name}</h4>
-              <p className="text-sm text-muted-foreground font-body">{t.position}</p>
+              <h4 className="text-lg font-display text-primary-foreground">{t.name}</h4>
+              <p className="text-sm text-primary-foreground/50 font-body">{t.position}</p>
             </motion.div>
           </AnimatePresence>
 
           <div className="flex items-center justify-center gap-4 mt-8">
             <button
               onClick={prev}
-              className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors"
-              aria-label="Previous testimonial"
+              className="w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center text-primary-foreground/60 hover:border-primary hover:text-primary transition-colors"
+              aria-label="Previous"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-4 h-4" />
             </button>
             <div className="flex gap-2">
               {testimonials.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all ${
-                    i === current ? "bg-gold w-8" : "bg-border"
+                  className={`h-1.5 rounded-full transition-all ${
+                    i === current ? "w-8 bg-primary" : "w-3 bg-primary-foreground/20"
                   }`}
-                  aria-label={`Go to testimonial ${i + 1}`}
                 />
               ))}
             </div>
             <button
               onClick={next}
-              className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors"
-              aria-label="Next testimonial"
+              className="w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center text-primary-foreground/60 hover:border-primary hover:text-primary transition-colors"
+              aria-label="Next"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>

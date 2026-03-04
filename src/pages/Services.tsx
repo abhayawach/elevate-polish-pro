@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Building2, Warehouse, GraduationCap, Home, CalendarCheck, Shield, UserCheck, ArrowRight } from "lucide-react";
+import { Building2, Warehouse, GraduationCap, Home, CalendarCheck, UserCheck, ArrowRight } from "lucide-react";
 
 const services = [
   {
@@ -51,22 +51,21 @@ const Services = () => {
   return (
     <>
       {/* Hero */}
-      <section className="relative py-20 md:py-28 gradient-navy overflow-hidden">
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl" />
+      <section className="page-hero">
         <div className="container mx-auto relative z-10 text-center">
           <span className="section-tag">Our Services</span>
-          <h1 className="text-4xl md:text-5xl font-bold font-display mt-4 mb-4" style={{ color: "hsl(var(--primary-foreground))" }}>
-            Security <span className="text-gradient-gold">Solutions</span>
+          <h1 className="text-4xl md:text-5xl font-display text-primary-foreground mt-5 mb-3">
+            Security Solutions
           </h1>
-          <p className="font-body max-w-2xl mx-auto" style={{ color: "hsl(var(--primary-foreground) / 0.7)" }}>
+          <p className="font-body max-w-2xl mx-auto text-primary-foreground/60">
             Comprehensive security services tailored to meet diverse needs across all sectors.
           </p>
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Services */}
       <section className="section-padding bg-background">
-        <div className="container mx-auto space-y-8">
+        <div className="container mx-auto space-y-10">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
@@ -74,25 +73,25 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className={`grid md:grid-cols-2 gap-8 items-center ${i % 2 !== 0 ? "md:direction-rtl" : ""}`}
+              className={`grid md:grid-cols-2 gap-8 items-center`}
             >
               <div className={i % 2 !== 0 ? "md:order-2" : ""}>
-                <img src={service.image} alt={service.title} className="w-full h-72 md:h-80 object-cover rounded-2xl shadow-lg" />
+                <img src={service.image} alt={service.title} className="w-full h-72 md:h-80 object-cover rounded-xl shadow-md" />
               </div>
               <div className={i % 2 !== 0 ? "md:order-1" : ""}>
-                <div className="w-12 h-12 rounded-xl bg-navy/10 flex items-center justify-center mb-4">
-                  <service.icon className="w-6 h-6 text-navy" />
+                <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <service.icon className="w-5 h-5 text-primary" />
                 </div>
-                <h2 className="text-2xl font-bold font-display text-foreground mb-3">{service.title}</h2>
+                <h2 className="text-2xl font-display text-foreground mb-3">{service.title}</h2>
                 <p className="text-muted-foreground font-body leading-relaxed mb-5">{service.description}</p>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {service.features.map(f => (
-                    <span key={f} className="px-3 py-1 rounded-full text-xs font-medium font-body bg-muted text-muted-foreground border border-border">
+                    <span key={f} className="px-3 py-1 rounded-full text-xs font-medium font-body bg-primary/5 text-primary border border-primary/15">
                       {f}
                     </span>
                   ))}
                 </div>
-                <Link to="/contact" className="inline-flex items-center gap-2 text-sm font-semibold font-body text-navy hover:text-gold transition-colors">
+                <Link to="/contact" className="inline-flex items-center gap-2 text-sm font-semibold font-body text-primary hover:text-cyan-dark transition-colors">
                   Get Quote <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

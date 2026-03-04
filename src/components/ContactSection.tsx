@@ -20,36 +20,39 @@ const ContactSection = () => {
     setFormData({ name: "", phone: "", email: "", service: "", message: "" });
   };
 
+  const inputClass = "w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all placeholder:text-muted-foreground/50";
+
   return (
     <section className="section-padding bg-muted/30" id="contact">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-14">
           <span className="section-tag">Contact Us</span>
-          <h2 className="text-3xl md:text-4xl font-bold font-display text-foreground mt-4 mb-4">
-            Get In <span className="text-gradient-gold">Touch</span>
+          <h2 className="text-3xl md:text-4xl font-display text-foreground mt-5 mb-2">
+            Get In Touch
           </h2>
+          <div className="w-16 h-1 bg-primary rounded-full mx-auto mb-4" />
           <p className="text-muted-foreground font-body max-w-2xl mx-auto">
             Ready to secure your premises? Contact us for a free consultation and custom security plan.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-5 gap-8">
-          {/* Info */}
+          {/* Info cards */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-2 space-y-4"
+            className="lg:col-span-2 space-y-3"
           >
             {contactInfo.map((item) => (
-              <div key={item.title} className="flex items-start gap-4 p-5 rounded-xl bg-card border border-border">
-                <div className="w-11 h-11 rounded-lg bg-navy/10 flex items-center justify-center shrink-0">
-                  <item.icon className="w-5 h-5 text-navy" />
+              <div key={item.title} className="flex items-start gap-4 p-5 rounded-xl bg-card border border-border hover:border-primary/20 transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                  <item.icon className="w-5 h-5 text-primary" />
                 </div>
                 <div>
                   <h4 className="text-sm font-semibold font-body text-foreground">{item.title}</h4>
                   {item.link ? (
-                    <a href={item.link} className="text-sm text-muted-foreground hover:text-gold transition-colors font-body">
+                    <a href={item.link} className="text-sm text-muted-foreground hover:text-primary transition-colors font-body">
                       {item.detail}
                     </a>
                   ) : (
@@ -66,50 +69,34 @@ const ContactSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             onSubmit={handleSubmit}
-            className="lg:col-span-3 bg-card rounded-2xl border border-border p-8 space-y-5"
+            className="lg:col-span-3 bg-card rounded-2xl border border-border p-7 space-y-4"
           >
-            <div className="grid md:grid-cols-2 gap-5">
+            <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium font-body text-foreground mb-1.5">Full Name</label>
-                <input
-                  type="text"
-                  required
-                  value={formData.name}
+                <input type="text" required value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground font-body text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all"
-                  placeholder="Your Name"
-                />
+                  className={inputClass} placeholder="Your Name" />
               </div>
               <div>
                 <label className="block text-sm font-medium font-body text-foreground mb-1.5">Phone Number</label>
-                <input
-                  type="tel"
-                  required
-                  value={formData.phone}
+                <input type="tel" required value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground font-body text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all"
-                  placeholder="+91 XXXXXXXXXX"
-                />
+                  className={inputClass} placeholder="+91 XXXXXXXXXX" />
               </div>
             </div>
-            <div className="grid md:grid-cols-2 gap-5">
+            <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium font-body text-foreground mb-1.5">Email</label>
-                <input
-                  type="email"
-                  value={formData.email}
+                <input type="email" value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground font-body text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all"
-                  placeholder="your@email.com"
-                />
+                  className={inputClass} placeholder="your@email.com" />
               </div>
               <div>
                 <label className="block text-sm font-medium font-body text-foreground mb-1.5">Service Required</label>
-                <select
-                  value={formData.service}
+                <select value={formData.service}
                   onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground font-body text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all"
-                >
+                  className={inputClass}>
                   <option value="">Select a service</option>
                   <option>Corporate Office Security</option>
                   <option>Warehouse Security</option>
@@ -122,18 +109,12 @@ const ContactSection = () => {
             </div>
             <div>
               <label className="block text-sm font-medium font-body text-foreground mb-1.5">Message</label>
-              <textarea
-                rows={4}
-                value={formData.message}
+              <textarea rows={4} value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground font-body text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all resize-none"
-                placeholder="Tell us about your security needs..."
-              />
+                className={`${inputClass} resize-none`} placeholder="Tell us about your security needs..." />
             </div>
-            <button
-              type="submit"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-navy font-semibold font-body text-primary-foreground hover:bg-navy-light transition-colors w-full md:w-auto justify-center"
-            >
+            <button type="submit"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-primary text-primary-foreground font-semibold font-body text-sm hover:bg-cyan-dark transition-colors w-full md:w-auto justify-center">
               <Send className="w-4 h-4" />
               Send Enquiry
             </button>

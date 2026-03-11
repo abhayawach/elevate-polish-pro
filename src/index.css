@@ -165,4 +165,14 @@
       transform: translateY(0);
     }
   }
+
+  @keyframes drift {
+    from { background-position: 0 0; }
+    to { background-position: 120px 120px; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30px, -20px) scale(1.1); }
+  }
 }

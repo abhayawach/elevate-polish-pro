@@ -51,7 +51,14 @@ const Services = () => {
   return (
     <>
       {/* Hero */}
-      <section className="page-hero">
+      <section className="page-hero relative overflow-hidden">
+        {/* Animated dot pattern */}
+        <div className="absolute inset-0 dot-pattern opacity-30 animate-[drift_20s_linear_infinite]" />
+        {/* Floating gradient orbs */}
+        <div className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-[hsl(var(--cyan)/0.08)] blur-3xl animate-[float_8s_ease-in-out_infinite]" />
+        <div className="absolute -bottom-20 -right-20 w-96 h-96 rounded-full bg-[hsl(var(--cyan)/0.06)] blur-3xl animate-[float_10s_ease-in-out_infinite_reverse]" />
+        {/* Diagonal lines texture */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'repeating-linear-gradient(45deg, hsl(var(--cyan)), hsl(var(--cyan)) 1px, transparent 1px, transparent 20px)' }} />
         <div className="container mx-auto relative z-10 text-center">
           <span className="section-tag">Our Services</span>
           <h1 className="text-4xl md:text-5xl font-display text-primary-foreground mt-5 mb-3">

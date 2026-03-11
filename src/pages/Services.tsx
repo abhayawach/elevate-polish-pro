@@ -127,38 +127,70 @@ const Services = () => {
       <section className="section-padding bg-background">
         <div className="container mx-auto space-y-10">
           {services.map((service, i) => (
-            <motion.div
+            <div
               key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
               className="grid md:grid-cols-2 gap-8 items-center"
             >
-              <div className={i % 2 !== 0 ? "md:order-2" : ""}>
-                <img src={service.image} alt={service.title} className="w-full h-72 md:h-80 object-cover rounded-xl shadow-md" />
-              </div>
-              <div>
-                <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <service.icon className="w-5 h-5 text-primary" />
+              <motion.div
+                className={i % 2 !== 0 ? "md:order-2" : ""}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -60 : 60 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                <div className="overflow-hidden rounded-xl shadow-md group">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-72 md:h-80 object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                  />
                 </div>
-                <h2 className="text-2xl font-display text-foreground mb-3">{service.title}</h2>
-                <p className="text-muted-foreground font-body leading-relaxed mb-5">{service.description}</p>
-                <div className="flex flex-wrap gap-2 mb-6">
+              </motion.div>
+              <div className={i % 2 !== 0 ? "md:order-1" : ""}>
+                <motion.h2
+                  className="text-2xl font-display text-foreground mb-3"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                >
+                  {service.title}
+                </motion.h2>
+                <motion.p
+                  className="text-muted-foreground font-body leading-relaxed mb-5"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  {service.description}
+                </motion.p>
+                <motion.div
+                  className="flex flex-wrap gap-2 mb-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
                   {service.features.map((f) => (
                     <span key={f} className="px-3 py-1 rounded-full text-xs font-medium font-body bg-primary/5 text-primary border border-primary/15">
                       {f}
                     </span>
                   ))}
-                </div>
-                <button
+                </motion.div>
+                <motion.button
                   onClick={() => setSelectedService(i)}
-                  className="inline-flex items-center gap-2 text-sm font-semibold font-body text-primary hover:text-cyan-dark transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold font-body text-primary hover:text-cyan-dark transition-colors cursor-pointer group"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  whileHover={{ x: 5 }}
                 >
-                  View More <ArrowRight className="w-4 h-4" />
-                </button>
+                  View More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>

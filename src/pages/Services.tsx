@@ -52,13 +52,19 @@ const Services = () => {
     <>
       {/* Hero */}
       <section className="page-hero relative overflow-hidden">
-        {/* Animated dot pattern */}
-        <div className="absolute inset-0 dot-pattern opacity-30 animate-[drift_20s_linear_infinite]" />
+        {/* Animated wave layers */}
+        <svg className="absolute bottom-0 left-0 w-full h-40 z-[1]" viewBox="0 0 1440 160" preserveAspectRatio="none">
+          <path className="animate-[wave_6s_ease-in-out_infinite]" fill="hsl(var(--cyan) / 0.08)" d="M0,64 C360,128 720,0 1080,64 C1260,96 1380,80 1440,64 L1440,160 L0,160 Z" />
+          <path className="animate-[wave_8s_ease-in-out_infinite_reverse]" fill="hsl(var(--cyan) / 0.05)" d="M0,96 C240,32 480,128 720,96 C960,64 1200,128 1440,96 L1440,160 L0,160 Z" />
+          <path className="animate-[wave_10s_ease-in-out_infinite]" fill="hsl(var(--cyan) / 0.03)" d="M0,128 C180,80 360,160 540,128 C720,96 900,160 1080,128 C1260,96 1380,128 1440,112 L1440,160 L0,160 Z" />
+        </svg>
+        {/* Top wave */}
+        <svg className="absolute top-0 left-0 w-full h-24 z-[1] rotate-180" viewBox="0 0 1440 100" preserveAspectRatio="none">
+          <path className="animate-[wave_7s_ease-in-out_infinite]" fill="hsl(var(--cyan) / 0.06)" d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,100 L0,100 Z" />
+        </svg>
         {/* Floating gradient orbs */}
-        <div className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-[hsl(var(--cyan)/0.08)] blur-3xl animate-[float_8s_ease-in-out_infinite]" />
-        <div className="absolute -bottom-20 -right-20 w-96 h-96 rounded-full bg-[hsl(var(--cyan)/0.06)] blur-3xl animate-[float_10s_ease-in-out_infinite_reverse]" />
-        {/* Diagonal lines texture */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'repeating-linear-gradient(45deg, hsl(var(--cyan)), hsl(var(--cyan)) 1px, transparent 1px, transparent 20px)' }} />
+        <div className="absolute top-1/4 left-10 w-48 h-48 rounded-full bg-[hsl(var(--cyan)/0.1)] blur-2xl animate-[float_8s_ease-in-out_infinite]" />
+        <div className="absolute bottom-1/4 right-10 w-64 h-64 rounded-full bg-[hsl(var(--cyan)/0.07)] blur-2xl animate-[float_10s_ease-in-out_infinite_reverse]" />
         <div className="container mx-auto relative z-10 text-center">
           <span className="section-tag">Our Services</span>
           <h1 className="text-4xl md:text-5xl font-display text-primary-foreground mt-5 mb-3">
